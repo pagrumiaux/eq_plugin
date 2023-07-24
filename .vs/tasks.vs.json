@@ -1,0 +1,15 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "tâche-SimpleEQ22",
+      "appliesTo": "SimpleEQ22.filtergraph",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "tâche-eq_plugin",
+      "appliesTo": "/",
+      "type": "launch"
+    }
+  ]
+}
