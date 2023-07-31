@@ -376,6 +376,7 @@ void ResponseCurveComponent::resized()
 
     for (auto gdB : gain)
     {
+        // right scale
         auto y = jmap(gdB, -24.f, 24.f, float(bottom), float(top));
 
         String str;
@@ -392,6 +393,16 @@ void ResponseCurveComponent::resized()
 
         g.setColour(gdB == 0.f ? Colour(0u, 172u, 1u) : Colours::lightgrey);
 
+        g.drawFittedText(str, r, juce::Justification::centred, 1);
+
+        // left scale
+        str.clear();
+        str << (gdB - 24.f);
+
+        r.setX(1);
+        textWidth = g.getCurrentFont().getStringWidth(str);
+        r.setSize(textWidth, fontHeight);
+        g.setColour(Colours::lightgrey);
         g.drawFittedText(str, r, juce::Justification::centred, 1);
     }
 }
