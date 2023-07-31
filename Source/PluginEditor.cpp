@@ -332,13 +332,13 @@ void ResponseCurveComponent::resized()
 
     Array<float> gain
     {
-        -24, 12, 0, 12, 24
+        -24, -12, 0, 12, 24
     };
 
     for (auto gdB : gain)
     {
         auto y = jmap(gdB, -24.f, 24.f, float(bottom), float(top));
-        g.setColour(gdB == 0.f ? Colour(0u, 172u, 1u)  : Colours::darkgrey);
+        g.setColour(gdB == 0.f ? Colour(0u, 172u, 1u) : Colours::darkgrey);
         g.drawHorizontalLine(y, left, right);    
     }
 
@@ -370,6 +370,27 @@ void ResponseCurveComponent::resized()
         r.setSize(textWidth, fontHeight);
         r.setCentre(x, 0);
         r.setY(1);
+
+        g.drawFittedText(str, r, juce::Justification::centred, 1);
+    }
+
+    for (auto gdB : gain)
+    {
+        auto y = jmap(gdB, -24.f, 24.f, float(bottom), float(top));
+
+        String str;
+        if (gdB > 0)
+            str << "+";
+        str << gdB;
+
+        auto textWidth = g.getCurrentFont().getStringWidth(str);
+
+        Rectangle<int> r;
+        r.setSize(textWidth, fontHeight);
+        r.setX(getWidth() - textWidth);
+        r.setCentre(r.getCentreX(), y);
+
+        g.setColour(gdB == 0.f ? Colour(0u, 172u, 1u) : Colours::lightgrey);
 
         g.drawFittedText(str, r, juce::Justification::centred, 1);
     }
