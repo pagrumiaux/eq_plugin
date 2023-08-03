@@ -333,7 +333,7 @@ void ResponseCurveComponent::paint(juce::Graphics& g)
                 mag *= highcut.get<0>().coefficients->getMagnitudeForFrequency(freq, sampleRate);
             if (!highcut.isBypassed<1>())
                 mag *= highcut.get<1>().coefficients->getMagnitudeForFrequency(freq, sampleRate);
-            if (!highcut.isBypassed<2>())
+            if (!highcut.isBypassed<2>()) 
                 mag *= highcut.get<2>().coefficients->getMagnitudeForFrequency(freq, sampleRate);
             if (!highcut.isBypassed<3>())
                 mag *= highcut.get<3>().coefficients->getMagnitudeForFrequency(freq, sampleRate);
